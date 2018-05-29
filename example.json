@@ -1,1 +1,355 @@
-{"i": {"type": "GamsSet", "dimension": 1, "domain": ["*"], "number_records": 2, "text": "canning plants", "elements": ["seattle", "san-diego"]}, "j": {"type": "GamsSet", "dimension": 1, "domain": ["*"], "number_records": 3, "text": "markets", "elements": ["new-york", "chicago", "topeka"]}, "a": {"type": "GamsParameter", "dimension": 1, "domain": ["i"], "number_records": 2, "text": "capacity of plant i in cases", "values": {"domain": ["seattle", "san-diego"], "data": [350.0, 600.0]}}, "b": {"type": "GamsParameter", "dimension": 1, "domain": ["j"], "number_records": 3, "text": "demand at market j in cases", "values": {"domain": ["new-york", "chicago", "topeka"], "data": [325.0, 300.0, 275.0]}}, "d": {"type": "GamsParameter", "dimension": 2, "domain": ["i", "j"], "number_records": 6, "text": "distance in thousands of miles", "values": {"domain": [["seattle", "new-york"], ["seattle", "chicago"], ["seattle", "topeka"], ["san-diego", "new-york"], ["san-diego", "chicago"], ["san-diego", "topeka"]], "data": [2.5, 1.7, 1.8, 2.5, 1.8, 1.4]}}, "f": {"type": "GamsParameter", "dimension": 0, "domain": [], "number_records": 1, "text": "freight in dollars per case per thousand miles", "values": 90.0}, "c": {"type": "GamsParameter", "dimension": 2, "domain": ["i", "j"], "number_records": 6, "text": "transport cost in thousands of dollars per case", "values": {"domain": [["seattle", "new-york"], ["seattle", "chicago"], ["seattle", "topeka"], ["san-diego", "new-york"], ["san-diego", "chicago"], ["san-diego", "topeka"]], "data": [0.225, 0.153, 0.162, 0.225, 0.162, 0.126]}}, "x": {"type": "GamsVariable", "dimension": 2, "domain": ["i", "j"], "number_records": 6, "text": "shipment quantities in cases", "vartype": 3, "values": {"domain": [["seattle", "new-york"], ["seattle", "chicago"], ["seattle", "topeka"], ["san-diego", "new-york"], ["san-diego", "chicago"], ["san-diego", "topeka"]], "lower": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "level": [50.0, 300.0, 0.0, 275.0, 0.0, 275.0], "upper": [Infinity, Infinity, Infinity, Infinity, Infinity, Infinity], "scale": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "marginal": [0.0, 0.0, 0.036000000000000004, 0.0, 0.009000000000000008, 0.0]}}, "z": {"type": "GamsVariable", "dimension": 0, "domain": [], "number_records": 1, "text": "total transportation costs in thousands of dollars", "vartype": 5, "values": {"domain": [], "lower": -Infinity, "level": 153.675, "upper": Infinity, "scale": 1.0, "marginal": 0.0}}, "cost": {"type": "GamsEquation", "dimension": 0, "domain": [], "number_records": 1, "text": "define objective function", "values": {"domain": [], "lower": 0.0, "level": 0.0, "upper": 0.0, "scale": 1.0, "marginal": 1.0}}, "supply": {"type": "GamsEquation", "dimension": 1, "domain": ["i"], "number_records": 2, "text": "observe supply limit at plant i", "values": {"domain": ["seattle", "san-diego"], "lower": [-Infinity, -Infinity], "level": [350.0, 550.0], "upper": [350.0, 600.0], "scale": [1.0, 1.0], "marginal": [5e-324, 0.0]}}, "demand": {"type": "GamsEquation", "dimension": 1, "domain": ["j"], "number_records": 3, "text": "satisfy demand at market j", "values": {"domain": ["new-york", "chicago", "topeka"], "lower": [325.0, 300.0, 275.0], "level": [325.0, 300.0, 275.0], "upper": [Infinity, Infinity, Infinity], "scale": [1.0, 1.0, 1.0], "marginal": [0.225, 0.153, 0.126]}}}
+{
+    "i": {
+        "type": "GamsSet",
+        "dimension": 1,
+        "domain": [
+            "*"
+        ],
+        "number_records": 2,
+        "text": "canning plants",
+        "elements": [
+            "seattle",
+            "san-diego"
+        ]
+    },
+    "j": {
+        "type": "GamsSet",
+        "dimension": 1,
+        "domain": [
+            "*"
+        ],
+        "number_records": 3,
+        "text": "markets",
+        "elements": [
+            "new-york",
+            "chicago",
+            "topeka"
+        ]
+    },
+    "a": {
+        "type": "GamsParameter",
+        "dimension": 1,
+        "domain": [
+            "i"
+        ],
+        "number_records": 2,
+        "text": "capacity of plant i in cases",
+        "values": {
+            "domain": [
+                "seattle",
+                "san-diego"
+            ],
+            "data": [
+                350.0,
+                600.0
+            ]
+        }
+    },
+    "b": {
+        "type": "GamsParameter",
+        "dimension": 1,
+        "domain": [
+            "j"
+        ],
+        "number_records": 3,
+        "text": "demand at market j in cases",
+        "values": {
+            "domain": [
+                "new-york",
+                "chicago",
+                "topeka"
+            ],
+            "data": [
+                325.0,
+                300.0,
+                275.0
+            ]
+        }
+    },
+    "d": {
+        "type": "GamsParameter",
+        "dimension": 2,
+        "domain": [
+            "i",
+            "j"
+        ],
+        "number_records": 6,
+        "text": "distance in thousands of miles",
+        "values": {
+            "domain": [
+                [
+                    "seattle",
+                    "new-york"
+                ],
+                [
+                    "seattle",
+                    "chicago"
+                ],
+                [
+                    "seattle",
+                    "topeka"
+                ],
+                [
+                    "san-diego",
+                    "new-york"
+                ],
+                [
+                    "san-diego",
+                    "chicago"
+                ],
+                [
+                    "san-diego",
+                    "topeka"
+                ]
+            ],
+            "data": [
+                2.5,
+                1.7,
+                1.8,
+                2.5,
+                1.8,
+                1.4
+            ]
+        }
+    },
+    "f": {
+        "type": "GamsParameter",
+        "dimension": 0,
+        "domain": [],
+        "number_records": 1,
+        "text": "freight in dollars per case per thousand miles",
+        "values": 90.0
+    },
+    "c": {
+        "type": "GamsParameter",
+        "dimension": 2,
+        "domain": [
+            "i",
+            "j"
+        ],
+        "number_records": 6,
+        "text": "transport cost in thousands of dollars per case",
+        "values": {
+            "domain": [
+                [
+                    "seattle",
+                    "new-york"
+                ],
+                [
+                    "seattle",
+                    "chicago"
+                ],
+                [
+                    "seattle",
+                    "topeka"
+                ],
+                [
+                    "san-diego",
+                    "new-york"
+                ],
+                [
+                    "san-diego",
+                    "chicago"
+                ],
+                [
+                    "san-diego",
+                    "topeka"
+                ]
+            ],
+            "data": [
+                0.225,
+                0.153,
+                0.162,
+                0.225,
+                0.162,
+                0.126
+            ]
+        }
+    },
+    "x": {
+        "type": "GamsVariable",
+        "dimension": 2,
+        "domain": [
+            "i",
+            "j"
+        ],
+        "number_records": 6,
+        "text": "shipment quantities in cases",
+        "vartype": 3,
+        "values": {
+            "domain": [
+                [
+                    "seattle",
+                    "new-york"
+                ],
+                [
+                    "seattle",
+                    "chicago"
+                ],
+                [
+                    "seattle",
+                    "topeka"
+                ],
+                [
+                    "san-diego",
+                    "new-york"
+                ],
+                [
+                    "san-diego",
+                    "chicago"
+                ],
+                [
+                    "san-diego",
+                    "topeka"
+                ]
+            ],
+            "lower": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "level": [
+                50.0,
+                300.0,
+                0.0,
+                275.0,
+                0.0,
+                275.0
+            ],
+            "upper": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "marginal": [
+                0.0,
+                0.0,
+                0.036000000000000004,
+                0.0,
+                0.009000000000000008,
+                0.0
+            ]
+        }
+    },
+    "z": {
+        "type": "GamsVariable",
+        "dimension": 0,
+        "domain": [],
+        "number_records": 1,
+        "text": "total transportation costs in thousands of dollars",
+        "vartype": 5,
+        "values": {
+            "domain": [],
+            "lower": -Infinity,
+            "level": 153.675,
+            "upper": Infinity,
+            "scale": 1.0,
+            "marginal": 0.0
+        }
+    },
+    "cost": {
+        "type": "GamsEquation",
+        "dimension": 0,
+        "domain": [],
+        "number_records": 1,
+        "text": "define objective function",
+        "values": {
+            "domain": [],
+            "lower": 0.0,
+            "level": 0.0,
+            "upper": 0.0,
+            "scale": 1.0,
+            "marginal": 1.0
+        }
+    },
+    "supply": {
+        "type": "GamsEquation",
+        "dimension": 1,
+        "domain": [
+            "i"
+        ],
+        "number_records": 2,
+        "text": "observe supply limit at plant i",
+        "values": {
+            "domain": [
+                "seattle",
+                "san-diego"
+            ],
+            "lower": [
+                -Infinity,
+                -Infinity
+            ],
+            "level": [
+                350.0,
+                550.0
+            ],
+            "upper": [
+                350.0,
+                600.0
+            ],
+            "scale": [
+                1.0,
+                1.0
+            ],
+            "marginal": [
+                5e-324,
+                0.0
+            ]
+        }
+    },
+    "demand": {
+        "type": "GamsEquation",
+        "dimension": 1,
+        "domain": [
+            "j"
+        ],
+        "number_records": 3,
+        "text": "satisfy demand at market j",
+        "values": {
+            "domain": [
+                "new-york",
+                "chicago",
+                "topeka"
+            ],
+            "lower": [
+                325.0,
+                300.0,
+                275.0
+            ],
+            "level": [
+                325.0,
+                300.0,
+                275.0
+            ],
+            "upper": [
+                Infinity,
+                Infinity,
+                Infinity
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "marginal": [
+                0.225,
+                0.153,
+                0.126
+            ]
+        }
+    }
+}
