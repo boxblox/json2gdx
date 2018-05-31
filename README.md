@@ -5,7 +5,9 @@ Creates a GAMS (gdx) database file from a json formatted input file. Currently o
 Python 3, GAMS API (high level)
 
 # Use
+```
 python3 json2gdx.py --in=inputfilename.json --out=outputfilename.gdx
+```
 
 Output filename is optional, default is 'data.gdx'.
 
